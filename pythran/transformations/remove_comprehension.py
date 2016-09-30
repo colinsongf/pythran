@@ -150,8 +150,7 @@ class RemoveComprehension(Transformation):
         sargs = sorted(ast.Name(arg, ast.Param(), None) for arg in args)
         fd = ast.FunctionDef(name,
                              ast.arguments(sargs, None, [], [], None, []),
-                             [body],
-                             [], [])
+                             [body], [], None)
         self.ctx.module.body.append(fd)
         return ast.Call(
             ast.Name(name, ast.Load(), None),
